@@ -19,7 +19,7 @@ def remake_secret(mod, shares):
 
 
 def main():
-    print("\nReconstruct the secret:")
+    print("****Reconstruct the secret****")
     threshold = int(input("Enter the threshold number of shares needed to reconstruct the secret: "))
     mod = int(input("Enter the mod number used: "))
     shares_input = []
