@@ -12,4 +12,15 @@ def initialize_coefficients(secret, num_shares, threshold, mod):
     return coefficients, secret
 
 
+def create_shares(secret, num_shares, threshold, prime, coefficients):
+    shares = []
+    # Generate each share by evaluating the polynomial at different x values
+    for x in range(1, num_shares + 1):
+        y = secret
+        for power in range(1, threshold):
+            y += coefficients[power - 1] * x ** power
+        shares.append((x, y % prime))
+    return shares
+
+
 print(initialize_coefficients(secret, num_shares, threshold, mod))
