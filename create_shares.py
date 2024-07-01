@@ -2,19 +2,19 @@ import random
 
 
 def initialize_coefficients(secret, num_shares, threshold, mod):
-    secret = secret % mod  # The secret reduced modulo prime
+    secret = secret % mod  # The secret reduced modulo
     coefficients = [random.randint(1, mod) for _ in range(threshold - 1)]
     return coefficients, secret
 
 
-def create_shares(secret, num_shares, threshold, prime, coefficients):
+def create_shares(secret, num_shares, threshold, mod, coefficients):
     shares = []
     # Generate each share by evaluating the polynomial at different x values
     for x in range(1, num_shares + 1):
         y = secret
         for power in range(1, threshold):
             y += coefficients[power - 1] * x ** power
-        shares.append((x, y % prime))
+        shares.append((x, y % mod))
     return shares
 
 
