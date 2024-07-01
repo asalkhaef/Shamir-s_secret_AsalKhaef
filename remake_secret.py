@@ -12,7 +12,26 @@ def lagrange_interpolate_at_zero(x_values, y_values, mod):
     return secret
 
 
-def remake_secret(threshold, total_shares, mod, shares):
+def remake_secret(mod, shares):
     x_values = [x for x, y in shares]
     y_values = [y for x, y in shares]
     return lagrange_interpolate_at_zero(x_values, y_values, mod)
+
+
+def main():
+    print("\nReconstruct the secret:")
+    threshold = int(input("Enter the threshold number of shares needed to reconstruct the secret: "))
+    mod = int(input("Enter the mod number used: "))
+    shares_input = []
+    for _ in range(threshold):
+        x = int(input("Enter the x value of the share: "))
+        y = int(input("Enter the y value of the share: "))
+        shares_input.append((x, y))
+
+    # Reconstruct and display the secret
+    reconstructed_secret = remake_secret(mod, shares_input)
+    print(f"\nThe reconstructed secret is: {reconstructed_secret}")
+
+
+if __name__ == "__main__":
+    main()
