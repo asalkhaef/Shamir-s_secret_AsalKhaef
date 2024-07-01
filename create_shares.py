@@ -31,6 +31,7 @@ def display_polynomial(secret, coefficients):
 
 
 def main():
+    print("Create shares:")
     # Get user input
     secret = int(input("Enter the secret: "))
     num_shares = int(input("Enter the number of shares to create: "))
