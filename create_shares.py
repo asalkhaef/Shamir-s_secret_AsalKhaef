@@ -36,7 +36,7 @@ def main():
     secret = int(input("Enter the secret: "))
     num_shares = int(input("Enter the number of shares to create: "))
     threshold = int(input("Enter the threshold number of shares required to reconstruct the secret: "))
-    mod = int(input("Enter a prime number (should be larger than the secret): "))
+    mod = int(input("Enter a mod number (should be larger than the secret): "))
 
     # Initialize the secret sharing parameters
     coefficients, secret = initialize_coefficients(secret, num_shares, threshold, mod)
